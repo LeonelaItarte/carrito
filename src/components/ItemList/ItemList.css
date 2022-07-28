@@ -1,0 +1,6 @@
+.productos-container{
+    display:flex;
+    align-self: center;
+    align-items: center;
+    justify-content: space-around;
+}

@@ -12,8 +12,9 @@ const ItemListContainer = (props) => {
 
    setStock(stock - numeroRestar)
 
-  }
-
+   }
+// request para pedir algo a una api
+// response es la respuesta que nos da la api
     useEffect(() => {
       getProducts()
       .then(response => {

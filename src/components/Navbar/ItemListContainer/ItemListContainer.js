@@ -1,12 +1,14 @@
 import ItemCount from "../../ItemCount/ItemCount"
 import {useEffect, useState} from 'react';
-import { getProducts } from "../../../AsyncMock";
+import { getProducts, getProductsByCategoryID} from "../../../AsyncMock";
 import ItemList from "../../ItemList/ItemList";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = (props) => {
   let [stock, setStock] = useState(6) ;
   let [mostrar, setMostrar] = useState(false); 
   let [productos, setProductos] = useState([])
+  let {categoryID} = useParams()
 
   function onAdd(numeroRestar){
 
@@ -15,16 +17,17 @@ const ItemListContainer = (props) => {
    }
 // request para pedir algo a una api
 // response es la respuesta que nos da la api
+let traerProductos = categoryID ? getProductsByCategoryID : getProducts;
+
     useEffect(() => {
-      getProducts()
-      .then(response => {
-        
-        setProductos(response)
-      })
-      
-      .catch(erorr => console.log(erorr))
-      .finally(() => {setMostrar(true)})
-    }, [])
+
+        traerProductos(categoryID).then((response) => {
+                setProductos(response);
+            }).catch(error =>{
+                console.log(error)
+            }).finally(() => {
+                setMostrar(true);
+            })}, [categoryID])
 
 
     if(!mostrar){

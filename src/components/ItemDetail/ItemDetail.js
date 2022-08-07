@@ -1,6 +1,21 @@
 import "./ItemDetail.css"
+import ItemCount from "../ItemCount/ItemCount";
+import {useState} from 'react';
+import { Link } from "react-router-dom";
 
 const ItemDetail = ({id, name, price, category, img, stock, description, shipping}) => {
+
+    let [nuevoStock, setNuevoStock] = useState(stock);
+
+    let [bandera ,setBandera] = useState(false);
+
+    function onAdd(contador){
+
+      setNuevoStock(e => e - contador)
+
+      setBandera(true)
+     
+    }
 
     return (
         <div className="item-detail">
@@ -27,14 +42,13 @@ const ItemDetail = ({id, name, price, category, img, stock, description, shippin
                         <p>Envio: {shipping}</p>
                     </div>
                     <div>
-                        <p>{stock} unidades disponibles</p>
+                        <p>{nuevoStock} unidades disponibles</p>
                     </div>
                     <div className="button-container">
+                       
                         <div>
-                            <button>COMPRAR</button>
-                        </div>
-                        <div>
-                            <button>Agregar al Carrito</button>
+                            {bandera ? <Link to='/cart'>Finalizar compra</Link> : <ItemCount stock={stock} onAdd={onAdd}/>}
+                            
                         </div>
                     </div>
                 </div>

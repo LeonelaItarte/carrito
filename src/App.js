@@ -17,6 +17,7 @@ function App() {
         <Route path='/detail/:productId' element={<ItemDetailContainer/>}/>
 
         </Routes>
+        
     </div>
     </BrowserRouter>
   );

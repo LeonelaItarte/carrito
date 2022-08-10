@@ -1,9 +1,12 @@
 import {useState} from 'react';
 
-const ItemCount= ({stock, onAdd}) =>{
+const ItemCount= ({stock, onAdd,initial}) =>{
    
-    let [contador, setContador]= useState(0);
+    initial = typeof initial == 'undefined' ? 1 :initial
 
+    let [contador, setContador]= useState(initial);
+
+    
     function restar(){
         
         if(contador > 1){

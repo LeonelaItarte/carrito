@@ -6,7 +6,10 @@ import { CartContext } from "../../Context/CartContext";
 
 const ItemDetail = ({id, name, price, category, img, stock, description, shipping}) => {
 
-    const {cart, addItem} = useContext(CartContext); 
+    const {cart, addItem, getProductQuantity} = useContext(CartContext); 
+
+    const quantityAdded = getProductQuantity(id)
+    
 
     let [nuevoStock, setNuevoStock] = useState(stock);
 
@@ -51,7 +54,7 @@ const ItemDetail = ({id, name, price, category, img, stock, description, shippin
                     <div className="button-container">
                        
                         <div>
-                            {bandera ? <Link to='/cart'>Finalizar compra</Link> : <ItemCount stock={stock} onAdd={onAdd}/>}
+                            {bandera ? <Link to='/cart'>Finalizar compra</Link> : <ItemCount stock={stock} onAdd={onAdd} initial={quantityAdded}/>}
                             
                         </div>
                     </div>

@@ -1,9 +1,12 @@
 import "./ItemDetail.css"
 import ItemCount from "../ItemCount/ItemCount";
-import {useState} from 'react';
+import {useState,useContext} from 'react';
 import { Link } from "react-router-dom";
+import { CartContext } from "../../Context/CartContext";
 
 const ItemDetail = ({id, name, price, category, img, stock, description, shipping}) => {
+
+    const {cart, addItem} = useContext(CartContext); 
 
     let [nuevoStock, setNuevoStock] = useState(stock);
 
@@ -14,7 +17,8 @@ const ItemDetail = ({id, name, price, category, img, stock, description, shippin
       setNuevoStock(e => e - contador)
 
       setBandera(true)
-     
+      
+      addItem({id,name,price,contador})
     }
 
     return (

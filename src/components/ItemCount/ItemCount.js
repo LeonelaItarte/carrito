@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-const ItemCount= ({stock, onAdd,initial}) =>{
+const ItemCount= ({stock, onAdd,initial,mostrarBoton, cambiarPrecio}) =>{
    
     initial = typeof initial == 'undefined' ? 1 :initial
 
@@ -15,6 +15,9 @@ const ItemCount= ({stock, onAdd,initial}) =>{
             contador = contador - 1 
             
             )
+            if(!mostrarBoton){
+                cambiarPrecio(contador)
+            }
         }
     }
     function sumar(){
@@ -24,6 +27,9 @@ const ItemCount= ({stock, onAdd,initial}) =>{
         contador = contador + 1 
 
         )
+        if(!mostrarBoton){
+            cambiarPrecio(contador)
+        }
       }
     }
 
@@ -43,9 +49,10 @@ const ItemCount= ({stock, onAdd,initial}) =>{
                 <p>{contador}</p>
                 <button onClick={sumar}>+</button>
             </div>
-            <div>
+            {mostrarBoton && (<div>
                 <button onClick={agregar}>Agregar al carrito</button>
-            </div>
+            </div>)}
+            
         </div>
         
 

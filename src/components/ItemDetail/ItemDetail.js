@@ -21,7 +21,7 @@ const ItemDetail = ({id, name, price, category, img, stock, description, shippin
 
       setBandera(true)
       
-      addItem({id,name,price,contador})
+      addItem({id,name,price,contador,img,stock})
     }
 
     return (
@@ -54,7 +54,7 @@ const ItemDetail = ({id, name, price, category, img, stock, description, shippin
                     <div className="button-container">
                        
                         <div>
-                            {bandera ? <Link to='/cart'>Finalizar compra</Link> : <ItemCount stock={stock} onAdd={onAdd} initial={quantityAdded}/>}
+                            {bandera ? <Link to='/cart'>Finalizar compra</Link> : <ItemCount stock={stock} onAdd={onAdd} initial={quantityAdded} mostrarBoton={true}/>}
                             
                         </div>
                     </div>

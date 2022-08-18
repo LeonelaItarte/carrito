@@ -1,12 +1,15 @@
 
 import {useEffect, useState} from 'react';
-import { getProduct } from "../../AsyncMock";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import "./ItemDetailContainer.css"
 import { useParams } from "react-router-dom";
+import {getDoc,doc} from 'firebase/firestore';
+import {db} from '../../services/firebase/index'
+
 
 
 const ItemDetailContainer = (props) => {
+
   let [mostrar, setMostrar] = useState(false); 
   let [producto, setProducto] = useState("")
   let params = useParams();
@@ -16,14 +19,18 @@ const ItemDetailContainer = (props) => {
 // request para pedir algo a una api
 // response es la respuesta que nos da la api
     useEffect(() => {
-      getProduct(params.productId)
-      .then(response => {
-        
-        setProducto(response)
-      })
-      
-      .catch(erorr => console.log(erorr))
+
+      getDoc(doc(db,'products',params.productId)).then(response =>{
+       
+        const values = response.data()
+
+        const product= {id:response.id,...values}
+
+        setProducto(product)
+      }).catch(erorr => console.log(erorr))
       .finally(() => {setMostrar(true)})
+      
+     
     }, [])
 
 

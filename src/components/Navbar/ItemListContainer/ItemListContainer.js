@@ -1,8 +1,10 @@
 import ItemCount from "../../ItemCount/ItemCount"
 import {useEffect, useState} from 'react';
-import { getProducts, getProductsByCategoryID} from "../../../AsyncMock";
 import ItemList from "../../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import { getDocs, collection, query, where } from "firebase/firestore";
+import {db} from '../../../services/firebase/index'
+
 
 const ItemListContainer = (props) => {
   let [stock, setStock] = useState(6) ;
@@ -17,17 +19,32 @@ const ItemListContainer = (props) => {
    }
 // request para pedir algo a una api
 // response es la respuesta que nos da la api
-let traerProductos = categoryID ? getProductsByCategoryID : getProducts;
+//let traerProductos = categoryID ? getProductsByCategoryID : getProducts;
 
     useEffect(() => {
 
-        traerProductos(categoryID).then((response) => {
-                setProductos(response);
-            }).catch(error =>{
-                console.log(error)
-            }).finally(() => {
-                setMostrar(true);
-            })}, [categoryID])
+      const collectionRef = !categoryID ? collection(db,'products') : query(collection(db,'products'), where('category','==',categoryID));
+
+      getDocs(collectionRef).then((response)=>{
+
+        const products = response.docs.map(doc=>{
+
+          const values = doc.data()
+
+          return{id: doc.id,...values}
+
+        })
+
+        setProductos(products)
+        
+
+      }).catch(error =>{
+               console.log(error)
+         }).finally(() => {
+               setMostrar(true);
+          })
+       
+          }, [categoryID])
 
 
     if(!mostrar){

@@ -52,7 +52,7 @@ const CartItem = ({cart})=>{
 
             <button onClick={() => {removeItem(cart.id)}}>X</button>
 
-            <button>Finalizar Compra</button>
+            
 
            </div>
         </div>

@@ -1,8 +1,18 @@
 import "./CartList.css";
 import CartItem from "../CartItem/CartItem";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Modal from "../../Modal/Modal";
+import ModalFinal from "../../ModalFinal/ModalFinal";
 
 const CartList = ({cart})=>{
+
+    const [open, setOpen] = useState(false)
+
+    const [ordenID, setOrdenID] = useState(null)
+
+    console.log('soy el ordenid ' + ordenID)
+
 
     if(cart.length === 0){
         return(
@@ -11,6 +21,7 @@ const CartList = ({cart})=>{
                 <Link to="/">
                    <button>Volver a productos</button>
                 </Link>
+                 <ModalFinal  ordenID={ordenID}/> 
             </div>
         )
     }
@@ -20,6 +31,13 @@ const CartList = ({cart})=>{
                 <CartItem key={p.id} cart={p}/>
                 
                 )}
+                <div>
+                    <button onClick={() => {setOpen(true)}}>Finalizar Compra</button>
+
+
+                </div>
+                <Modal open={open} onClose={() => {setOpen(false)}} setOrdenID={setOrdenID}/>
+                <ModalFinal  ordenID={ordenID} onClose={setOrdenID}/> 
         </div>
     )
 }

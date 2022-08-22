@@ -16,4 +16,4 @@ const CartListContainer = ()=>{
   )
 }
 
-export default CartListContainer; 
+export default CartListContainer;

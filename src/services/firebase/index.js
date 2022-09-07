@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import {getFirestore} from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDz5q11JPmv9VBVCYD7wLbxGl93f94RXf0",
-  authDomain: "carrito-curso-react.firebaseapp.com",
-  projectId: "carrito-curso-react",
-  storageBucket: "carrito-curso-react.appspot.com",
-  messagingSenderId: "1015521053713",
-  appId: "1:1015521053713:web:a9f7034da5470beb7435b0"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId:process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 const app = initializeApp(firebaseConfig);

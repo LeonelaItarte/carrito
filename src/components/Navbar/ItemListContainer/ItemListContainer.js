@@ -1,9 +1,10 @@
-import ItemCount from "../../ItemCount/ItemCount"
+import ItemCount from "../../ItemCount/ItemCount";
+import "./ItemListContainer.css";
 import {useEffect, useState} from 'react';
 import ItemList from "../../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { getDocs, collection, query, where } from "firebase/firestore";
-import {db} from '../../../services/firebase/index'
+import {db} from '../../../services/firebase/index';
 
 
 const ItemListContainer = (props) => {
@@ -39,7 +40,7 @@ const ItemListContainer = (props) => {
         
 
       }).catch(error =>{
-               console.log(error)
+             
          }).finally(() => {
                setMostrar(true);
           })
@@ -57,7 +58,7 @@ const ItemListContainer = (props) => {
 
 
   return(
-    <div>
+    <div className="itemListContainer">
           <h1>Todos nuestros productos</h1>
           <ItemList productos={productos}/>
 

@@ -1,3 +1,7 @@
+*{
+  color: white;
+  text-decoration: none;
+}
 .imagen-detalle{
     max-width:100%;
     max-height:100%;
@@ -18,33 +22,37 @@
     display: flex;
     align-self: center;
     justify-content: space-around;
-    border-left: 1px solid gray;
+    border: 1px solid gray;
     border-right: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
+
 
 .detail{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
+ 
 }
 
 .detail-left{
+  
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: 150px;
     justify-content: space-between;
     width: auto;
-    height: 100%;
-    width: 250px;
+   
 }
 
+
 .detail-rigth{
-    display: flex;
-    flex-direction: column;
+ 
     align-items: center;
     justify-content: space-between;
-    height: 100%;
-    width: 250px;
+    
 }
 
 .button-container{
@@ -52,4 +60,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+}
+.BotonFinalizarCompra{
+    background-color: yellow;
+    color: black;
+    border-radius: 5px;
+    margin: 10px;
+    height: 30px;
+    border: 0;
+    text-decoration: none;
+}
+.BotonFinalizarCompra:hover{
+    background-color: rgba(255, 255, 0, 0.384)
 }

@@ -7,8 +7,6 @@ const CartWidget = () =>{
 
    const {quantity} = useContext(CartContext);
    
-   
-   
     const cantidad = quantity()
 
     if(cantidad !== 0){

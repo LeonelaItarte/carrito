@@ -1,3 +1,4 @@
+import "./ItemCount.css"
 import {useState} from 'react';
 
 const ItemCount= ({stock, onAdd,initial,mostrarBoton, cambiarPrecio}) =>{
@@ -43,13 +44,13 @@ const ItemCount= ({stock, onAdd,initial,mostrarBoton, cambiarPrecio}) =>{
     }
     return(
  
-        <div >
-            <div>
+        <div className="itemCount">
+            <div className="cantidad">
                 <button onClick={restar}>-</button>
                 <p>{contador}</p>
                 <button onClick={sumar}>+</button>
             </div>
-            {mostrarBoton && (<div>
+            {mostrarBoton && (<div className="agregarAlCarrito">
                 <button onClick={agregar}>Agregar al carrito</button>
             </div>)}
             

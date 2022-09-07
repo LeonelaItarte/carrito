@@ -6,13 +6,14 @@ const Navbar = () => {
         <nav className='nav'>
             <div className='logo'> 
                 <Link to={`/`}>
-                Caramel
+                <img src="images/Negro_y_Amarillo_Cuadro_Industrial_Logo.png" alt="logo"/>
                 </Link>
             </div>
             <div>
-                <button><Link to={'/category/tablet'}>Tablet</Link></button>
-                <button><Link to={'/category/celular'}>Celulares</Link></button>
-                <button id ='boton'>Carrito</button>
+                <button><Link to={'/category/fiat'}>Fiat</Link></button>
+                <button><Link to={'/category/renault'}>Renault</Link></button>
+                <button><Link to={'/category/toyota'}>Toyota</Link></button>
+                
             </div>
             <CartWidget/>
         </nav>

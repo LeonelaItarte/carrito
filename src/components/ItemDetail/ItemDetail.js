@@ -41,20 +41,18 @@ const ItemDetail = ({id, name, price, category, img, stock, description, shippin
                     </div>
 
                     <div>
-                        <p>${price}</p>
+                        <p>Precio: ${price}</p>
                     </div>
                 </div>
                 <div className="detail-rigth">
-                    <div>
-                        <p>Envio: {shipping}</p>
-                    </div>
+                    
                     <div>
                         <p>{nuevoStock} unidades disponibles</p>
                     </div>
                     <div className="button-container">
                        
-                        <div>
-                            {bandera ? <Link to='/cart'>Finalizar compra</Link> : <ItemCount stock={stock} onAdd={onAdd} initial={quantityAdded} mostrarBoton={true}/>}
+                        <div >
+                            {bandera ? <Link to='/cart'><button className="BotonFinalizarCompra">Finalizar compra</button></Link> : <ItemCount stock={stock} onAdd={onAdd} initial={quantityAdded} mostrarBoton={true}/>}
                             
                         </div>
                     </div>

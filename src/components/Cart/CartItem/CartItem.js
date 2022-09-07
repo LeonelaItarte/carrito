@@ -11,14 +11,27 @@ const CartItem = ({cart})=>{
 
     function cambiarPrecio(cantidad){
         setContadorPrecio(cart.price * cantidad)
+        cart.contador = cantidad
+        addItem(cart)
     }
 
-    const {removeItem}= useContext(CartContext); 
+
+
+    const {removeItem, addItem}= useContext(CartContext); 
 
 
 
     return(
+     <div className="fondo">
         <div className="cartContainer">
+
+            <div className="clouse">
+
+              <button onClick={() => {removeItem(cart.id)}}>X</button>
+
+            </div>
+
+
 
            <div className="cart">
                 <div className='image-container'>
@@ -33,13 +46,13 @@ const CartItem = ({cart})=>{
 
                 </div>
 
-                <div>
+                <div className="cart2">
 
                     <ItemCount initial={cart.contador} stock={cart.stock} mostrarBoton={false} cambiarPrecio={cambiarPrecio}/>
 
                 </div>
 
-                <div>
+                <div className="cart2">
 
                     <p>$ {contadorPrecio}</p>
 
@@ -48,14 +61,9 @@ const CartItem = ({cart})=>{
            </div>
 
 
-           <div>
-
-            <button onClick={() => {removeItem(cart.id)}}>X</button>
-
-            
-
-           </div>
+          
         </div>
+     </div>
     )
 }
 

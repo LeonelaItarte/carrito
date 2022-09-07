@@ -1,9 +1,10 @@
 import "./CartList.css";
 import CartItem from "../CartItem/CartItem";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Modal from "../../Modal/Modal";
 import ModalFinal from "../../ModalFinal/ModalFinal";
+import { CartContext } from "../../../Context/CartContext";
 
 const CartList = ({cart})=>{
 
@@ -11,8 +12,9 @@ const CartList = ({cart})=>{
 
     const [ordenID, setOrdenID] = useState(null)
 
-    console.log('soy el ordenid ' + ordenID)
+    const {getTotal} = useContext(CartContext)
 
+    let total = getTotal()
 
     if(cart.length === 0){
         return(
@@ -32,6 +34,9 @@ const CartList = ({cart})=>{
                 
                 )}
                 <div>
+                    <div>
+                     <h2>Total: ${total}</h2>
+                    </div>
                     <button onClick={() => {setOpen(true)}}>Finalizar Compra</button>
 
 

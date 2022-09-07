@@ -19,7 +19,7 @@ const Item = ({producto}) => {
                         <p>${producto.price}</p>
                     </div>
                     <div className='envio'>
-                        <p>Envio {producto.shipping}</p>
+                        <button>Ver producto {producto.shipping}</button>
                     </div>
                 </div>
             </div>

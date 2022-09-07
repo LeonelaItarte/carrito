@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 const ModalFinal = ({ordenID, onClose}) => {
 
-    console.log('asdasdasdasadsas' + ordenID )
+    
     const overlay = useRef(null)
     const Modal = useRef(null)
 
@@ -35,7 +35,7 @@ const ModalFinal = ({ordenID, onClose}) => {
     return ( 
         <div className="overlay" ref={overlay} >
             <div className="modal" ref={Modal}>
-            <h5>{mensaje}</h5> 
+            <h4>{mensaje}</h4> 
             <button onClick={accion}><Link to={ruta}>{mensajeBoton}</Link></button>
             </div>
         </div>
